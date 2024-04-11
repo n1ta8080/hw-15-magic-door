@@ -7,45 +7,43 @@
 </head>
 <body>
     <script>
-        function openDoor(key, code) {
-            if (key == true) {
-                switch (code) {
-                    case 42:
-                        console.log("Відповідь на все! Двері розкриваються широко.");
-                        break;
-                    case 7:
-                        console.log("Щасливий номер 7! Двері скрипляться відчиняються.");
-                        break;
-                    case 13:
-                        console.log("Нещасливе число 13! Двері захлопуються.");
-                        break;
-                    default:
-                        break;
-                }
-                if (code > 100) {
-                    console.log("Двері магічно відчиняються!");
-                }
-            } else {
+     function openDoor(key, code) {
 
-                if (code <= 100) {
-                    console.log("Двері залишаються закритими міцно");
-                } else {
-                    console.log("Хмм.. нічого не відбувається");
-                }
+            if (key && code > 100) {
+                console.log("Двері магічно відчиняються!");
+                return;
             }
+
+            if (!key && code <= 100) {
+                console.log("Двері залишаються закритими міцно.");
+                return; 
+            }
+
+            switch (code) {
+                case 42:
+                    console.log("Відповідь на все! Двері розкриваються широко.");
+                    return;
+                case 7:
+                    console.log("Щасливий номер 7! Двері скрипляться відчиняються.");
+                    return;
+                case 13:
+                    console.log("Нещасливе число 13! Двері захлопуються.");
+                    return;
+                default:
+                    console.log("Хмм.. нічого не відбувається з цим кодом")
+                    break;
+            }
+
+            console.log("Хм... Нічого не відбувається.");
         }
 
-        //комбінації для перевірки по кожному з випадків
-        openDoor(true, 42);
-        openDoor(true, 7);
-        openDoor(true, 13);
-        openDoor(true, 42);
-
-        openDoor(true, 102);
-        openDoor(false, 100);
-        openDoor(false, 10);
-
-        openDoor(false, 122);
+        // Тестуємо функцію перебором різних комбінаціями
+        openDoor(true, 101); // Двері магічно відчиняються!
+        openDoor(false, 50); // Двері залишаються закритими міцно.
+        openDoor(true, 42); // Відповідь на все! Двері розкриваються широко.
+        openDoor(true, 7); // Щасливий номер 7! Двері скрипляться відчиняються.
+        openDoor(true, 13); // Нещасливе число 13! Двері захлопуються.
+        openDoor(false, 200); // Хм... Нічого не відбувається.
     </script>
 </body>
 </html>
